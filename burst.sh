@@ -24,15 +24,20 @@ touch /home/pi/lockfile
 # Capturing images
 ffmpeg -t ${BURST_INPUT_DURATION_SEC} -s ${BURST_INPUT_RESOLUTION} -i /dev/video0 -r ${BURST_INPUT_FRAME_RATE} -f image2 /home/pi/burst/image%04d.jpg
 
-# Creating GIF
-ffmpeg -f image2 -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/home/pi/burst/*.jpg' -vf scale=${BURST_GIF_RESOLUTION} /home/pi/day.zip/burst.gif
 # Creating MP4
+echo "******** Create MP4"
 ffmpeg -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/home/pi/burst/*.jpg' -c:v libx264 -vf crop=960:960:160:0 /home/pi/day.zip/burst.mp4
 
 # Uploading to Instagram
+echo "******** Upload to Instagram"
 video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -c "${INSTAGRAM_BURST_CAPTION}" -f /home/pi/day.zip/burst.mp4`
 
+# Creating GIF
+echo "******** Create GIF"
+ffmpeg -f image2 -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/home/pi/burst/*.jpg' -vf scale=${BURST_GIF_RESOLUTION} /home/pi/day.zip/burst.gif
+
 # Uploading to Slack
+echo "******** Upload to Slack"
 curl -F file=@/home/pi/day.zip/burst.gif -F channels=da_pi_team -F title='minute.zip' -F initial_comment="Like it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
 exit 0
