@@ -2,7 +2,7 @@
 
 day=`date +"%Y-%m-%d"`
 timestamp=`date +"%Y-%m-%d-%H-%M-%S"`
-dir="/home/pi/${day}"
+dir="/home/pi/daily/${day}"
 `mkdir ${dir}`
 file="${dir}/${timestamp}.jpg"
 
