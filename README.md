@@ -20,6 +20,7 @@ grep CRON /var/log/syslog
 ### Capture an image
 ```
 fswebcam -r 1080x1080 --no-banner out.jpg
+```
 
 ### Resources
 
