@@ -5,22 +5,15 @@ day=`date +"%Y-%m-%d"`
 dir="/home/pi/daily/${day}"
 
 function finish {
+  # Don't do this for now, else it will delete all our pics from today!
   # `rm -rf ${dir}`
-  rm /home/pi/lockfile
-  # rm /home/pi/day.zip/daily.gif
-  # rm /home/pi/day.zip/daily.mp4
+  rm /home/pi/day.zip/daily.gif
+  rm /home/pi/day.zip/daily.mp4
 }
 trap finish EXIT
 
-while [ -f "/home/pi/lockfile" ]; do
-  sleep 1
-  echo "Locked ..."
-done
-touch /home/pi/lockfile
-
-#echo "****** Running ffmpeg command: ${ffmpeg}"
-# rm daily.gif
-# rm daily.mp4
+rm daily.gif
+rm daily.mp4
 
 files="${dir}/*.jpg"
 
@@ -39,18 +32,18 @@ echo "************"
 echo "************"
 echo "Uploading to Instagram"
 echo "************"
-video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${quote} #insideklarna"`
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4`
 
 echo "************"
 echo "Creating GIF"
 echo "************"
 # Creating GIF
-ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif
+ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif -c "#insideklarna #daily"
 
 # Uploading to Slack
 echo "************"
 echo "Uploading to Slack"
 echo "************"
-curl -F file=@daily.gif -F channels=da_pi_team -F title='Day.zip' -F initial_comment="Like it in instagram: ${video_path} / ${quote}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
+curl -F file=@daily.gif -F channels=tel-aviv,da_pi_team -F title='day.zip' -F initial_comment="${quote} \nLike it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
 exit 0
