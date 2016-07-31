@@ -38,12 +38,12 @@ echo "************"
 echo "Creating GIF"
 echo "************"
 # Creating GIF
-ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif
+ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif -c "#insideklarna #daily"
 
 # Uploading to Slack
 echo "************"
 echo "Uploading to Slack"
 echo "************"
-curl -F file=@daily.gif -F channels=tel-aviv,da_pi_team -F title='Day.zip' -F initial_comment="Like it in instagram: ${video_path} / ${quote}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
+curl -F file=@daily.gif -F channels=tel-aviv,da_pi_team -F title='day.zip' -F initial_comment="${quote} \nLike it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
 exit 0
