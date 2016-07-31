@@ -22,10 +22,15 @@ try {
     $i->login();
 } catch (Exception $e) {
     $e->getMessage();
-    exit();
+    exit(1);
 }
 try {
     $i->uploadVideo($file, $caption);
+    $feed = $i->getSelfUserFeed();
+    $id = $feed['items'][0]['code'];
+    echo "https://www.instagram.com/p/$id/";
+    exit(0);
 } catch (Exception $e) {
     echo $e->getMessage();
+    exit(1);
 }
