@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config.env
+
 day=`date +"%Y-%m-%d"`
 dir="/home/pi/burst"
 `mkdir ${dir}`
@@ -14,6 +16,9 @@ done
 `rm /home/pi/lockfile`
 
 `ffmpeg -f image2 -framerate 5 -pattern_type glob -i '/home/pi/burst/*.jpg' -vf scale=500x500 out.gif`
-`ffmpeg -framerate 5 -pattern_type glob -i '/home/pi/burst/*.jpg' -c:v libx264 out.mp4`
+`ffmpeg -framerate 5 -pattern_type glob -i '/home/pi/burst/*.jpg' -c
+:v libx264 out.mp4`
+
+slack="curl -F file=@out.gif -F channels=da_pi_team -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"
 
 exit 0
