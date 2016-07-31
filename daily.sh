@@ -32,7 +32,7 @@ echo "************"
 echo "************"
 echo "Uploading to Instagram"
 echo "************"
-video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4`
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${INSTAGRAM_DAILY_CAPTION}"`
 
 echo "************"
 echo "Creating GIF"
