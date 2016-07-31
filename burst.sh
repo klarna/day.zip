@@ -28,7 +28,7 @@ done
 # Creating MP4
 `ffmpeg -framerate 15 -pattern_type glob -i '/home/pi/burst/*.jpg' -c:v libx264 -vf crop=960:960:160:0 burst.mp4`
 
-quote=shuf -n 1 quotes.txt
+quote=`shuf -n 1 quotes.txt`
 # Uploading to Instagram
 video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f burst.mp4 -c "${quote} #insideklarna"`
 
