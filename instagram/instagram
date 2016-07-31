@@ -26,6 +26,10 @@ try {
 }
 try {
     $i->uploadVideo($file, $caption);
+    $feed = $i->getSelfUserFeed();
+    $id = $feed['items'][0]['code'];
+    echo "https://www.instagram.com/p/$id/";
 } catch (Exception $e) {
     echo $e->getMessage();
+    exit(1);
 }
