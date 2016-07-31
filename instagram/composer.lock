@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "a1664a06df35295fb84a69b0725ad6b9",
+    "content-hash": "19baf6de69c3c230ee8f39eb0a7e36cf",
+    "packages": [
+        {
+            "name": "mgp25/instagram-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mgp25/Instagram-API.git",
+                "reference": "45a8e72f324f1f4ac0a237e2ac5ed20ff96d7145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mgp25/Instagram-API/zipball/45a8e72f324f1f4ac0a237e2ac5ed20ff96d7145",
+                "reference": "45a8e72f324f1f4ac0a237e2ac5ed20ff96d7145",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mgp25",
+                    "email": "me@mgp25.com"
+                }
+            ],
+            "description": "Instagram private API PHP",
+            "keywords": [
+                "api",
+                "instagram",
+                "php",
+                "private"
+            ],
+            "time": "2016-07-30 23:35:17"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "mgp25/instagram-php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
