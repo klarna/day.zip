@@ -3,7 +3,7 @@
 day=`date +"%Y-%m-%d"`
 directory="/home/pi/daily/${day}"
 
-ffmpeg="ffmpeg -f image2 -framerate 5 -pattern_type glob -i 'images-test/*.jpg' -vf scale=500x500 out.gif"
+ffmpeg="ffmpeg -f image2 -framerate 5 -pattern_type glob -i '${directory}/*.jpg' -vf scale=500x500 out.gif"
 slack="curl -F file=@out.gif -F channels=da_pi_team -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"
 
 echo "****** Running ffmpeg command: ${ffmpeg}"
