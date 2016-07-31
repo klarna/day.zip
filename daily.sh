@@ -31,13 +31,13 @@ echo "************"
 echo "Creating GIF"
 echo "************"
 # Creating GIF
-`ffmpeg -f image2 -framerate 30 -pattern_type glob -i '${files}' daily.gif`
+`ffmpeg -f image2 -framerate 30 -pattern_type glob -i '$files' daily.gif`
 
 echo "************"
 echo "Creating MP4"
 echo "************"
 # Creating MP4
-`ffmpeg -framerate 30 -pattern_type glob -i '${files}' -c:v libx264 -vf crop=960:960:160:0 daily.mp4`
+`ffmpeg -framerate 30 -pattern_type glob -i '$files' -c:v libx264 -vf crop=960:960:160:0 daily.mp4`
 
 quote=`shuf -n 1 quotes.txt`
 echo "************"
