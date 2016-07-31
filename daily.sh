@@ -23,19 +23,16 @@ slack="curl -F file=@out.gif -F channels=da_pi_team -F token=${SLACK_TOKEN} http
 echo "****** Running ffmpeg command: ${ffmpeg}"
 rm out.gif
 
-if eval $ffmpeg ; then
-    echo "Gif created successfully"
+# Creating GIF
+`ffmpeg -f image2 -framerate 30 -pattern_type glob -i '${dir}/*.jpg' daily.gif`
+# Creating MP4
+`ffmpeg -framerate 30 -pattern_type glob -i '${dir}/*.jpg' -c:v libx264 -vf crop=960:960:160:0 daily.mp4`
 
-    echo "****** Running slack upload: ${slack}"
-    if eval $slack ; then
-        echo "Uploaded to slack successfully"
-        # `rm -rf ${dir}`
-        exit 0
-    else
-        echo "slack upload failed"
-        exit 1
-    fi
-else
-    echo "ffmpeg failed"
-    exit 1
-fi
+quote=`shuf -n 1 quotes.txt`
+# Uploading to Instagram
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${quote} #insideklarna"`
+
+# Uploading to Slack
+`slack="curl -F file=@burst.gif -F channels=da_pi_team -F title='Day.zip' -F initial_comment='Like it in instagram: ${video_path}. ${quote}' -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"`
+
+exit 0
