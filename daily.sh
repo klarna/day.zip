@@ -18,9 +18,6 @@ while [ -f "/home/pi/lockfile" ]; do
 done
 touch /home/pi/lockfile
 
-# ffmpeg="ffmpeg -f image2 -framerate 5 -pattern_type glob -i '${dir}/*.jpg' -vf scale=500x500 out.gif"
-# slack="curl -F file=@out.gif -F channels=da_pi_team -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"
-
 #echo "****** Running ffmpeg command: ${ffmpeg}"
 rm daily.gif
 rm daily.mp4
@@ -31,13 +28,13 @@ echo "************"
 echo "Creating GIF"
 echo "************"
 # Creating GIF
-`ffmpeg -f image2 -framerate 30 -pattern_type glob -i '$files' daily.gif`
+ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" daily.gif
 
 echo "************"
 echo "Creating MP4"
 echo "************"
 # Creating MP4
-`ffmpeg -framerate 30 -pattern_type glob -i '$files' -c:v libx264 -vf crop=960:960:160:0 daily.mp4`
+ffmpeg -framerate 30 -pattern_type glob -i "$files" -c:v libx264 -vf crop=960:960:160:0 daily.mp4
 
 quote=`shuf -n 1 quotes.txt`
 echo "************"
