@@ -17,6 +17,11 @@ Check if cron is running properly:
 grep CRON /var/log/syslog
 ```
 
+### Capture an image
+```
+fswebcam -r 1080x1080 --no-banner out.jpg
+```
+
 ### Resources
 
 [Building ffmpeg + x264 on RaspberryPi](http://www.jeffreythompson.org/blog/2014/11/13/installing-ffmpeg-for-raspberry-pi/)
