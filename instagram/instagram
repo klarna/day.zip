@@ -6,11 +6,11 @@ $options = getopt('f:u:p:');
 $file = $options['f'];
 $username = $options['u'];
 $password = $options['p'];
-$caption = $options['c'];
+$caption = '';
 
 if (is_null($file) || is_null($username) || is_null($password)) {
   print 'Bad arguments\n';
-  print 'Usage: instagram -f <file> -u <username> -p <password> -c <caption>';
+  print 'Usage: instagram -f <file> -u <username> -p <password>';
   exit(1);
 }
 
