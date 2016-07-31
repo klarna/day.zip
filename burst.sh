@@ -26,12 +26,13 @@ done
 # Creating GIF
 `ffmpeg -f image2 -framerate 5 -pattern_type glob -i '/home/pi/burst/*.jpg' burst.gif`
 # Creating MP4
-`ffmpeg -framerate 5 -pattern_type glob -i '/home/pi/burst/*.jpg' -c:v libx264 -vf crop=960:960:160:0 burst.mp4`
+`ffmpeg -framerate 15 -pattern_type glob -i '/home/pi/burst/*.jpg' -c:v libx264 -vf crop=960:960:160:0 burst.mp4`
 
+quote=shuf -n 1 quotes.txt
 # Uploading to Instagram
-video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f burst.mp4`
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f burst.mp4 -c "${quote} #insideklarna"`
 
 # Uploading to Slack
-`slack="curl -F file=@burst.gif -F channels=da_pi_team -F title='Minute.zip' -F initial_comment='Like it in instagram: ${video_path}' -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"`
+`slack="curl -F file=@burst.gif -F channels=da_pi_team -F title='Minute.zip' -F initial_comment='Like it in instagram: ${video_path}. ${quote}' -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"`
 
 exit 0
