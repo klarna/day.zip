@@ -10,7 +10,7 @@ shot="fswebcam -r 1080x1080 --no-banner ${file}"
 echo "****** Running ${shot}"
 eval $shot
 
-if [ -f "$file" ]
+if [ -f "$file" ]; then
     echo "Pic taken successfully"
     exit 0
 else
@@ -18,7 +18,7 @@ else
     sleep 5
     eval $shot
 
-    if [ -f "$file" ]
+    if [ -f "$file" ]; then
         echo "Pic taken successfully in 2nd attempt"
         exit 0
     else
