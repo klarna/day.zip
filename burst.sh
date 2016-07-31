@@ -11,7 +11,7 @@ done
 
 `touch /home/pi/lockfile`
 
-counter=BURST_FRAME_RATE*BURST_DURATION_SEC
+let counter=$BURST_FRAME_RATE*$BURST_DURATION_SEC
 
 while counter > 0
 do
