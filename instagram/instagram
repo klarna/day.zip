@@ -2,15 +2,15 @@
 <?php
 include __DIR__.'/vendor/autoload.php';
 
-$options = getopt('f:u:p:');
+$options = getopt('f:u:p:c:');
 $file = $options['f'];
 $username = $options['u'];
 $password = $options['p'];
-$caption = '';
+$caption = $options['c'];
 
 if (is_null($file) || is_null($username) || is_null($password)) {
   print 'Bad arguments\n';
-  print 'Usage: instagram -f <file> -u <username> -p <password>';
+  print 'Usage: instagram -f <file> -u <username> -p <password> -c <caption>';
   exit(1);
 }
 

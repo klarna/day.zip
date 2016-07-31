@@ -30,7 +30,7 @@ ffmpeg -f image2 -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/h
 ffmpeg -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/home/pi/burst/*.jpg' -c:v libx264 -vf crop=960:960:160:0 burst.mp4
 
 # Uploading to Instagram
-video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f burst.mp4`
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -c ${INSTAGRAM_BURST_CAPTION} -f burst.mp4`
 
 # Uploading to Slack
 curl -F file=@burst.gif -F channels=da_pi_team -F title='Minute.zip' -F initial_comment="Like it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
