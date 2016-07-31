@@ -10,24 +10,6 @@ while [ -f "/home/pi/lockfile" ]; do
 done
 
 `touch /home/pi/lockfile`
-
-counter=0
-echo "FR IS ${BURST_FRAME_RATE} - ${BURST_DURATION_SEC}"
-echo "COUNTER IS ${counter}"
-let counter=BURST_FRAME_RATE*BURST_DURATION_SEC
-echo "COUNTER IS ${counter}"
-
-while [ $counter -gt 0 ]; do
-  timestamp=`date +"%Y-%m-%d-%H-%M-%S-%N"`
-  file="${dir}/${timestamp}.jpg"
-
-  shot="fswebcam -r 1080x1080 --no-banner ${file}"
-  echo "****** Running ${shot}"
-  eval $shot
-
-  # sleep 1/BURST_FRAME_RATE
-  let counter-=1
-done
-
+`ffmpeg -t ${BURST_DURATION_SEC} -f v4l2 -framerate ${BURST_FRAME_RATE} -video_size 640x640 -i /dev/video0 burst.mkv`
 `rm /home/pi/lockfile`
 exit 0
