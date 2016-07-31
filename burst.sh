@@ -17,7 +17,7 @@ echo "COUNTER IS ${counter}"
 let counter=BURST_FRAME_RATE*BURST_DURATION_SEC
 echo "COUNTER IS ${counter}"
 
-while [$counter > 0]; do
+while [ $counter -gt 0 ]; do
   timestamp=`date +"%Y-%m-%d-%H-%M-%S-%N"`
   file="${dir}/${timestamp}.jpg"
 
