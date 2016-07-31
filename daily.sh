@@ -21,7 +21,7 @@ echo "************"
 echo "Creating MP4"
 echo "************"
 # Creating MP4
-ffmpeg -framerate 30 -pattern_type glob -i "$files" -c:v libx264 -vf crop=960:960:160:0 daily.mp4
+ffmpeg -framerate 30 -pattern_type glob -i "$files" -c:v libx264 -vf crop=960:960:160:0 daily.mp4 &> create-mp4.log
 
 quote=`shuf -n 1 quotes.txt`
 echo "************"
@@ -32,18 +32,18 @@ echo "************"
 echo "************"
 echo "Uploading to Instagram"
 echo "************"
-video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${INSTAGRAM_DAILY_CAPTION}"`
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${INSTAGRAM_DAILY_CAPTION}" &> upload-insta.log`
 
 echo "************"
 echo "Creating GIF"
 echo "************"
 # Creating GIF
-ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif -c "#insideklarna #daily"
+ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif -c "#insideklarna #daily" &> create-git.log
 
 # Uploading to Slack
 echo "************"
 echo "Uploading to Slack"
 echo "************"
-curl -F file=@daily.gif -F channels=tel-aviv,da_pi_team -F title='day.zip' -F initial_comment="${quote} \nLike it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
+curl -F file=@daily.gif -F channels=da_pi_team -F title='day.zip' -F initial_comment="${quote} \nLike it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload &> upload-slack.log
 
 exit 0
