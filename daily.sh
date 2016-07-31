@@ -7,7 +7,7 @@ dir="/home/pi/daily/${day}"
 function finish {
   # `rm -rf ${dir}`
   rm /home/pi/lockfile
-  rm /home/pi/day.zip/daily.gif
+  # rm /home/pi/day.zip/daily.gif
   rm /home/pi/day.zip/daily.mp4
 }
 trap finish EXIT
@@ -19,8 +19,8 @@ done
 touch /home/pi/lockfile
 
 #echo "****** Running ffmpeg command: ${ffmpeg}"
-rm daily.gif
-rm daily.mp4
+# rm daily.gif
+# rm daily.mp4
 
 files="${dir}/*.jpg"
 
@@ -52,6 +52,6 @@ video_path='TBD'
 echo "************"
 echo "Uploading to Slack"
 echo "************"
-`slack="curl -F file=@daily.gif -F channels=da_pi_team -F title='Day.zip' -F initial_comment='Like it in instagram: ${video_path}. ${quote}' -F token=${SLACK_TOKEN} https://slack.com/api/files.upload | grep -o '\"ok\":true'"`
+curl -F file=@daily.gif -F channels=da_pi_team -F title='Day.zip' -F initial_comment='Like it in instagram: ${video_path}. ${quote}' -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
 exit 0
