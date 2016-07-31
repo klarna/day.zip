@@ -31,3 +31,5 @@ fswebcam -r 1080x1080 --no-banner out.jpg
 [How to set up a scheduled task (Cron) with the Raspberry Pi](https://www.youtube.com/watch?v=UggNZundvPk)
 
 [Slack API: File upload](https://api.slack.com/methods/files.upload/test)
+
+[iPhone time lapse config](http://9to5mac.com/2014/10/01/iphone-time-lapse/)
