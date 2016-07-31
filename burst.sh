@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 day=`date +"%Y-%m-%d"`
 dir="/home/pi/burst"
@@ -11,7 +11,11 @@ done
 
 `touch /home/pi/lockfile`
 
-let counter=$BURST_FRAME_RATE*$BURST_DURATION_SEC
+counter=0
+echo "FR IS ${BURST_FRAME_RATE} - ${BURST_DURATION_SEC}"
+echo "COUNTER IS ${counter}"
+let counter=BURST_FRAME_RATE*BURST_DURATION_SEC
+echo "COUNTER IS ${counter}"
 
 while [$counter > 0]; do
   timestamp=`date +"%Y-%m-%d-%H-%M-%S-%N"`
