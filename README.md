@@ -1,5 +1,9 @@
 # Day.zip
 
-Hej!
+### Update crontab
 
-Yo!
+Pull the changes and run the following in the pi:
+
+```
+sudo cp crontab-file /var/spool/cron/crontabs/pi 
+```
