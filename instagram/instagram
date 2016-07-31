@@ -6,6 +6,7 @@ $options = getopt('f:u:p:');
 $file = $options['f'];
 $username = $options['u'];
 $password = $options['p'];
+$caption = '';
 
 if (is_null($file) || is_null($username) || is_null($password)) {
   print 'Bad arguments\n';
@@ -14,8 +15,6 @@ if (is_null($file) || is_null($username) || is_null($password)) {
 }
 
 $debug = false;
-$caption = '';
-
 //////////////////////
 $i = new \InstagramAPI\Instagram($username, $password, $debug);
 try {
