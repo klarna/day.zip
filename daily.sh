@@ -28,7 +28,7 @@ echo "************"
 echo "Creating GIF"
 echo "************"
 # Creating GIF
-ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=640:480 daily.gif
+ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif
 
 echo "************"
 echo "Creating MP4"
@@ -45,8 +45,7 @@ echo "************"
 echo "************"
 echo "Uploading to Instagram"
 echo "************"
-video_path='TBD'
-#`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${quote} #insideklarna"`
+# video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${quote} #insideklarna"`
 
 # Uploading to Slack
 echo "************"
