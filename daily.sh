@@ -8,7 +8,7 @@ function finish {
   # `rm -rf ${dir}`
   rm /home/pi/lockfile
   # rm /home/pi/day.zip/daily.gif
-  rm /home/pi/day.zip/daily.mp4
+  # rm /home/pi/day.zip/daily.mp4
 }
 trap finish EXIT
 
@@ -25,16 +25,10 @@ touch /home/pi/lockfile
 files="${dir}/*.jpg"
 
 echo "************"
-echo "Creating GIF"
-echo "************"
-# Creating GIF
-ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif
-
-echo "************"
 echo "Creating MP4"
 echo "************"
 # Creating MP4
-# ffmpeg -framerate 30 -pattern_type glob -i "$files" -c:v libx264 -vf crop=960:960:160:0 daily.mp4
+ffmpeg -framerate 30 -pattern_type glob -i "$files" -c:v libx264 -vf crop=960:960:160:0 daily.mp4
 
 quote=`shuf -n 1 quotes.txt`
 echo "************"
@@ -45,12 +39,18 @@ echo "************"
 echo "************"
 echo "Uploading to Instagram"
 echo "************"
-# video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${quote} #insideklarna"`
+video_path=`/home/pi/day.zip/instagram/instagram -u ${INSTAGRAM_USER} -p ${INSTAGRAM_PASS} -f daily.mp4 -c "${quote} #insideklarna"`
+
+echo "************"
+echo "Creating GIF"
+echo "************"
+# Creating GIF
+ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 daily.gif
 
 # Uploading to Slack
 echo "************"
 echo "Uploading to Slack"
 echo "************"
-curl -F file=@daily.gif -F channels=da_pi_team -F title='Day.zip' -F initial_comment='Like it in instagram: ${video_path}. ${quote}' -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
+curl -F file=@daily.gif -F channels=da_pi_team -F title='Day.zip' -F initial_comment="Like it in instagram: ${video_path} / ${quote}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
 exit 0
