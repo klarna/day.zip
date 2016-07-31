@@ -13,8 +13,7 @@ done
 
 let counter=$BURST_FRAME_RATE*$BURST_DURATION_SEC
 
-while counter > 0
-do
+while [$counter > 0]; do
   timestamp=`date +"%Y-%m-%d-%H-%M-%S-%N"`
   file="${dir}/${timestamp}.jpg"
 
