@@ -1,26 +1,44 @@
 <center>
   <img src="logo.png" width="250" />
+  <img src="https://cl.ly/0y3t1k1n0k1c/burst.gif" />
 </center>
 
 
-### Update crontab
 
-Pull the changes and run the following in the pi:
+### Dependencies
+
+PI: raspberrypi 4.4.11-v7+
+
+OS: [Raspbian GNU/Linux 8.0 (jessie)](https://www.raspberrypi.org/downloads/raspbian/) (install [NOOB](https://www.raspberrypi.org/downloads/noobs/) before)
+
+### Install
 
 ```
-sudo cp crontab-file /var/spool/cron/crontabs/pi 
+curl -L https://git.io/v6vmR | sudo bash
 ```
 
-Check if cron is running properly:
+Or if you're suspicious of the simplicity of the script above:
 
 ```
-grep CRON /var/log/syslog
+cd ~
+git clone git@github.com:klarna/day.zip.git
+cd day.zip
+sudo bash boot.sh
 ```
 
-### Capture an image
-```
-fswebcam -r 1080x1080 --no-banner out.jpg
-```
+### Config
+
+To customize your day.zip, simply update the `config.env` file. You can also update the random quotes by changing the `quotes.txt` file.
+
+### Usage
+
+##### day.zip
+
+Your day.zip box works automatically, provided it is turned on and it has internet access. By default, it will take pictures from 8am untill 8pm (you can change this by editing the `crontab-file` and running `crontab crontab-file`) and at the end it will create a time-lapse video and upload to the Instagram & Slack accounts configured in `config.env`.
+
+##### minute.zip
+
+You can also make a quick time-lapse video by just clicking your box's button. It will take shots for one minute and upload to the same accounts above.
 
 ### Resources
 
