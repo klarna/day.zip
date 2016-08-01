@@ -1,26 +1,34 @@
 <center>
   <img src="logo.png" width="250" />
+  <img src="https://cl.ly/2s0s0o0P0D1z/daily.gif" />
 </center>
 
 
-### Update crontab
 
-Pull the changes and run the following in the pi:
+### Dependencies
+
+PI: raspberrypi 4.4.11-v7+
+
+OS: [Raspbian GNU/Linux 8.0 (jessie)](https://www.raspberrypi.org/downloads/raspbian/) (install [NOOB](https://www.raspberrypi.org/downloads/noobs/) before)
+
+### Install
 
 ```
-sudo cp crontab-file /var/spool/cron/crontabs/pi 
+curl -L https://git.io/v6vmR | sudo bash
 ```
 
-Check if cron is running properly:
+Or if you're suspicious of the simplicity of the script above:
 
 ```
-grep CRON /var/log/syslog
+cd ~
+git clone git@github.com:klarna/day.zip.git
+cd day.zip
+sudo bash boot.sh
 ```
 
-### Capture an image
-```
-fswebcam -r 1080x1080 --no-banner out.jpg
-```
+### Config
+
+To customize your day.zip, simply update the `config.env` file.
 
 ### Resources
 
