@@ -24,6 +24,13 @@ make
 sudo make install
 
 echo "*** *** *** *** *** *** ***"
+echo "Installing php. Yucc."
+echo "*** *** *** *** *** *** ***"
+sudo apt-get install php5
+sudo apt-get install php5-gd
+sudo apt-get install php5-curl
+
+echo "*** *** *** *** *** *** ***"
 echo "Setting up crontab"
 echo "*** *** *** *** *** *** ***"
 crontab crontab-file
