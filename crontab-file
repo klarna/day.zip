@@ -29,4 +29,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 * 8-19 * * *	/home/pi/day.zip/interval.sh
 0 20 * * *	/home/pi/day.zip/daily.sh
-@reboot		/home/pi/day.zip/reboot.sh
+@reboot		python /home/pi/day.zip/button_pro.py
