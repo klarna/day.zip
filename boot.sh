@@ -3,10 +3,9 @@ echo "*** *** *** *** *** *** ***"
 echo "Installing day.zip, please be patient."
 echo "*** *** *** *** *** *** ***"
 
-# crontab
-crontab crontab-file
-
-# x264
+echo "*** *** *** *** *** *** ***"
+echo "Installing x264. Might take some time..."
+echo "*** *** *** *** *** *** ***"
 cd ~
 git clone git://git.videolan.org/x264
 cd x264
@@ -14,7 +13,9 @@ cd x264
 make
 sudo make install
 
-# ffmpeg
+echo "*** *** *** *** *** *** ***"
+echo "Installing ffmpeg. Might take some time..."
+echo "*** *** *** *** *** *** ***"
 cd ~
 git clone https://github.com/FFmpeg/FFmpeg.git
 cd ffmpeg
@@ -22,8 +23,16 @@ sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --
 make
 sudo make install
 
+echo "*** *** *** *** *** *** ***"
+echo "Setting up crontab"
+echo "*** *** *** *** *** *** ***"
+crontab crontab-file
+
 # run it
-python button_pro.py
+echo "*** *** *** *** *** *** ***"
+echo "Running day.zip"
+echo "*** *** *** *** *** *** ***"
+python button_pro.py 2&>1
 
 # done
 echo "*** *** *** *** *** *** ***"

@@ -1,6 +1,6 @@
 <center>
   <img src="logo.png" width="250" />
-  <img src="https://cl.ly/2s0s0o0P0D1z/daily.gif" />
+  <img src="https://cl.ly/0y3t1k1n0k1c/burst.gif" />
 </center>
 
 
@@ -29,6 +29,16 @@ sudo bash boot.sh
 ### Config
 
 To customize your day.zip, simply update the `config.env` file.
+
+### Usage
+
+##### day.zip
+
+Your day.zip box works automatically, provided it is turned on and it has internet access. By default, it will take pictures from 8am untill 8pm (you can change this by editing the `crontab-file` and running `crontab crontab-file`) and at the end it will create a time-lapse video and upload to the Instagram & Slack accounts configured in `config.env`.
+
+##### minute.zip
+
+You can also make a quick time-lapse video by just clicking your box's button. It will take shots for one minute and upload to the same accounts above.
 
 ### Resources
 
