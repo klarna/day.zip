@@ -55,3 +55,5 @@ You can also make a quick time-lapse video by just clicking your box's button. I
 [Slack API: File upload](https://api.slack.com/methods/files.upload/test)
 
 [iPhone time lapse config](http://9to5mac.com/2014/10/01/iphone-time-lapse/)
+
+[Hacking Instagram API](https://github.com/mgp25/Instagram-API)
