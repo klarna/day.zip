@@ -12,14 +12,14 @@ OS: [Raspbian GNU/Linux 8.0 (jessie)](https://www.raspberrypi.org/downloads/rasp
 ### Install
 
 ```
-curl -L https://git.io/v6vmR | sudo bash
+curl -L https://git.io/v6vcp | sudo bash
 ```
 
 Or if you're suspicious of the simplicity of the script above:
 
 ```
 cd ~
-git clone git@github.com:klarna/day.zip.git
+git clone https://github.com/klarna/day.zip.git
 cd day.zip
 sudo bash boot.sh
 ```
