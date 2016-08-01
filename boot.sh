@@ -1,7 +1,26 @@
-# done
+#!/bin/bash
+
 echo "*** *** *** *** *** *** ***"
 echo "Installing day.zip, please be patient."
 echo "*** *** *** *** *** *** ***"
+sudo aptitude update
+
+echo "*** *** *** *** *** *** ***"
+echo "Installing fswebcam"
+echo "*** *** *** *** *** *** ***"
+sudo apt-get -y install fswebcam
+
+echo "*** *** *** *** *** *** ***"
+echo "Installing php. Yucc."
+echo "*** *** *** *** *** *** ***"
+sudo apt-get -y install php5
+sudo apt-get -y install php5-gd
+sudo apt-get -y install php5-curl
+
+echo "*** *** *** *** *** *** ***"
+echo "Setting up crontab"
+echo "*** *** *** *** *** *** ***"
+crontab crontab-file
 
 echo "*** *** *** *** *** *** ***"
 echo "Installing x264. Might take some time..."
@@ -24,24 +43,10 @@ make
 sudo make install
 
 echo "*** *** *** *** *** *** ***"
-echo "Installing php. Yucc."
-echo "*** *** *** *** *** *** ***"
-sudo apt-get install php5
-sudo apt-get install php5-gd
-sudo apt-get install php5-curl
-
-echo "*** *** *** *** *** *** ***"
-echo "Setting up crontab"
-echo "*** *** *** *** *** *** ***"
-crontab crontab-file
-
-# run it
-echo "*** *** *** *** *** *** ***"
 echo "Running day.zip"
 echo "*** *** *** *** *** *** ***"
-python button_pro.py 2&>1
+python button_pro.py &
 
-# done
 echo "*** *** *** *** *** *** ***"
 echo "Install finished. Enjoy your day.zip!"
 echo "*** *** *** *** *** *** ***"
