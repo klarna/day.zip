@@ -24,6 +24,8 @@ cd day.zip
 sudo bash boot.sh
 ```
 
+The default install instructions will compile ffmpeg & x264 in your raspberrypi. If you want a quicker install, comment these lines in your boot.sh and simply link the built binaries with `ln -s ~/day.zip/bin/ffmpeg /usr/local/bin/` and `ln -s ~/day.zip/bin/x264 /usr/local/bin/`.
+
 ### Config
 
 To customize your day.zip, simply update the `config.env` file. You can also update the random quotes by changing the `quotes.txt` file.
