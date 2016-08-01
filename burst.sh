@@ -5,7 +5,7 @@ source /home/pi/day.zip/config.env
 function finish {
   rm -rf /home/pi/burst
   rm /home/pi/lockfile
-  rm /home/pi/day.zip/burst.gif
+  # rm /home/pi/day.zip/burst.gif
   rm /home/pi/day.zip/burst.mp4
 }
 trap finish EXIT
