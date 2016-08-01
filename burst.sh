@@ -5,7 +5,7 @@ source /home/pi/day.zip/config.env
 function finish {
   rm -rf /home/pi/burst
   rm /home/pi/lockfile
-  # rm /home/pi/day.zip/burst.gif
+  rm /home/pi/day.zip/burst.gif
   rm /home/pi/day.zip/burst.mp4
 }
 trap finish EXIT
@@ -40,4 +40,5 @@ ffmpeg -f image2 -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/h
 echo "******** Upload to Slack"
 curl -F file=@/home/pi/day.zip/burst.gif -F channels=tel-aviv,da_pi_team -F title='minute.zip' -F initial_comment="Like it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
+cp /home/pi/day.zip/burst.gif /home/pi/burst.gif
 exit 0
