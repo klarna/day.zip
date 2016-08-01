@@ -28,7 +28,7 @@ sudo bash boot.sh
 
 ### Config
 
-To customize your day.zip, simply update the `config.env` file.
+To customize your day.zip, simply update the `config.env` file. You can also update the random quotes by changing the `quotes.txt` file.
 
 ### Usage
 
