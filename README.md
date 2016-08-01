@@ -1,9 +1,7 @@
 <center>
   <img src="logo.png" width="250" />
-  <img src="https://cl.ly/0y3t1k1n0k1c/burst.gif" />
+  <img src="https://cl.ly/0y3t1k1n0k1c/burst.gif" width="200" />
 </center>
-
-
 
 ### Dependencies
 
@@ -41,6 +39,10 @@ Your day.zip box works automatically, provided it is turned on and it has intern
 You can also make a quick time-lapse video by just clicking your box's button. It will take shots for one minute and upload to the same accounts above.
 
 ### Resources
+
+[Knitting 101](https://www.youtube.com/playlist?list=PLR1ElIXW5YKJFob5KJvHS01Tj30Zyy2EQ)
+
+[How to make a wooden box](http://www.wikihow.com/Make-a-Wooden-Box)
 
 [Building ffmpeg + x264 on RaspberryPi](http://www.jeffreythompson.org/blog/2014/11/13/installing-ffmpeg-for-raspberry-pi/)
 

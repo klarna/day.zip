@@ -38,6 +38,6 @@ ffmpeg -f image2 -framerate ${BURST_OUTPUT_FRAME_RATE} -pattern_type glob -i '/h
 
 # Uploading to Slack
 echo "******** Upload to Slack"
-curl -F file=@/home/pi/day.zip/burst.gif -F channels=da_pi_team -F title='minute.zip' -F initial_comment="Like it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
+curl -F file=@/home/pi/day.zip/burst.gif -F channels=tel-aviv,da_pi_team -F title='minute.zip' -F initial_comment="Like it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload
 
 exit 0
