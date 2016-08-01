@@ -44,6 +44,6 @@ ffmpeg -f image2 -framerate 30 -pattern_type glob -i "$files" -vf scale=320:240 
 echo "************"
 echo "Uploading to Slack"
 echo "************"
-curl -F file=@/home/pi/day.zip/daily.gif -F channels=da_pi_team -F title='day.zip' -F initial_comment="${quote} \nLike it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload &> /home/pi/day.zip/upload-slack.log
+curl -F file=@/home/pi/day.zip/daily.gif -F channels=tel-aviv,da_pi_team -F title='day.zip' -F initial_comment="${quote} \nLike it in Instagram: ${video_path}" -F token=${SLACK_TOKEN} https://slack.com/api/files.upload &> /home/pi/day.zip/upload-slack.log
 
 exit 0
