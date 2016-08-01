@@ -8,7 +8,7 @@ button = Button(18)
 def click():
     print('on')
     led.light("green", 10)
-    subprocess.call(['./burst.sh'])
+    subprocess.call(['/home/pi/day.zip/burst.sh'])
     led.light("green", 10)
 button.when_pressed = click
 
